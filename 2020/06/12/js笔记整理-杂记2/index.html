@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":10,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1.javaScript字符串：​    常用方法： ​        charAt(),返回指定索引位置的字符； ​        indexOf(),返回字符串中检索指定字符第一次出现的位置，如果不存在则返回-1； ​        slice()，提取字符串的片断，并在新的字符串中返回被提取的部分； ​        split()，把字符串分割为子字符串数组，并返回该数组，参数为分割的规则">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js笔记整理-杂记2">
+<meta property="og:url" content="http://yoursite.com/2020/06/12/js%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86-%E6%9D%82%E8%AE%B02/index.html">
+<meta property="og:site_name" content="xd|前端日记">
+<meta property="og:description" content="1.javaScript字符串：​    常用方法： ​        charAt(),返回指定索引位置的字符； ​        indexOf(),返回字符串中检索指定字符第一次出现的位置，如果不存在则返回-1； ​        slice()，提取字符串的片断，并在新的字符串中返回被提取的部分； ​        split()，把字符串分割为子字符串数组，并返回该数组，参数为分割的规则">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-12T03:54:09.000Z">
+<meta property="article:modified_time" content="2020-06-16T03:25:31.551Z">
+<meta property="article:author" content="D.Xia">
+<meta property="article:tag" content="-js">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/06/12/js%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86-%E6%9D%82%E8%AE%B02/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>js笔记整理-杂记2 | xd|前端日记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xd|前端日记</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/12/js%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86-%E6%9D%82%E8%AE%B02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="D.Xia">
+      <meta itemprop="description" content="Fairy music flutters everywhere">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xd|前端日记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          js笔记整理-杂记2
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-12 11:54:09" itemprop="dateCreated datePublished" datetime="2020-06-12T11:54:09+08:00">2020-06-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-16 11:25:31" itemprop="dateModified" datetime="2020-06-16T11:25:31+08:00">2020-06-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="1-javaScript字符串："><a href="#1-javaScript字符串：" class="headerlink" title="1.javaScript字符串："></a>1.javaScript字符串：</h4><p>​    常用方法：</p>
+<p>​        charAt(),返回指定索引位置的<strong>字符</strong>；</p>
+<p>​        indexOf(),返回字符串中检索指定字符第一次出现的位置，如果不存在则返回-1；</p>
+<p>​        slice()，提取字符串的片断，并在新的字符串中返回被提取的部分；</p>
+<p>​        split()，把字符串分割为子字符串数组，并返回该数组，参数为分割的规则；</p>
+<p>​        substr(),从起始索引号提取字符串中指定数目的字符;</p>
+<p>​        substring(),提取字符串中两个指定索引号之间的字符;</p>
+<p>​        toString(),返回字符串对象值;</p>
+<p>​        trim(),移除字符串首尾的空白</p>
+<a id="more"></a>
+
+<h4 id="2-javaScript数据类型"><a href="#2-javaScript数据类型" class="headerlink" title="2.javaScript数据类型;"></a>2.javaScript数据类型;</h4><p>​    Symbol:es6新引入数据类型，表示独一无二的值；</p>
+<p>​    数据转换：Number() 转换为数字， String() 转换为字符串， Boolean() 转化为布尔值；</p>
+<p>​    NaN 的数据类型是 number；</p>
+<p>​    null 的数据类型是 object；</p>
+<p>​    未定义变量的数据类型为 undefined；</p>
+<p>​    可以使用 constructor 属性来查看对象是否为数组 (包含字符串 “Array”)；</p>
+<p>​    你可以使用 constructor 属性来查看对象是否为日期 (包含字符串 “Date”)；</p>
+<p>​    全局方法 <strong>Number()</strong> 可以将字符串转换为数字。</p>
+<p>​    字符串包含数字(如 “3.14”) 转换为数字 (如 3.14)，空字符串转换为 0，其他的字符串会转换为 NaN (不是个数字)；</p>
+<p>​    当 JavaScript 尝试操作一个 “错误” 的数据类型时，会自动转换为 “正确” 的数据类型， + null返回5null 转换为 0，”5”-1返回 4”5”转换为5；</p>
+<p>​    null 和 undefined 的值相等，但类型不等；</p>
+<h4 id="3-javaScript变量提升与严格模式："><a href="#3-javaScript变量提升与严格模式：" class="headerlink" title="3.javaScript变量提升与严格模式："></a>3.javaScript变量提升与严格模式：</h4><p>​    变量提升：函数声明和变量声明总是会被解释器悄悄地被”提升”到方法体的最顶部；</p>
+<p>​    JavaScript 中，函数及变量的声明都将被提升到函数的最顶部，变量可以在使用后声明，也就是变量可以先使用再声明；</p>
+<p>​    JavaScript 只有声明的变量会提升，初始化的不会；</p>
+<p>​    严格模式通过在脚本或函数的头部添加 “use strict”; 表达式来声明，目的是指定代码在严格条件下执行，严格模式下不能使用未声明的变量；</p>
+<h4 id="4-javaScript-this关键字"><a href="#4-javaScript-this关键字" class="headerlink" title="4.javaScript this关键字:"></a>4.javaScript this关键字:</h4><p>​    面向对象中this表示当前对象的一个引用，但在 JavaScript 中 this 不是固定不变的，它会随着执行环境的改变而改变；</p>
+<p>​    在方法中，this 表示该方法所属的对象；如果单独使用，this 表示全局对象；在函数中，this 表示全局对象；在函数中，在严格模式下，this 是未定义的(undefined)；在事件中，this 表示接收事件的元素；类似 call() 和 apply() 方法可以将 this 引用到任何对象；</p>
+<h4 id="5-javaScript中的-let和const"><a href="#5-javaScript中的-let和const" class="headerlink" title="5.javaScript中的 let和const"></a>5.javaScript中的 let和const</h4><p>​    ES6新增的两个关键字，let声明的变量只在let命令所在的代码块内生效。</p>
+<p>​    const声明的变量只在let命令所在的代码块内有效；const声明一个只读的常量，一旦声明，常量的值就不能改变；在 ES6 之前，JavaScript 只有两种作用域： <strong>全局变量</strong> 与 <strong>函数内的局部变量</strong>。</p>
+<p>​    全局变量声明方式：在函数外声明或者在函数内未使用var关键字进行声明。</p>
+<p>​    JavaScript 块级作用域：使用 var 关键字声明的变量不具备块级作用域的特性，它在 {} 外依然能被访问到，在ES6之前，是没有块级作用域的概念的，ES6可以使用let关键字来实现块级作用域。let声明的变量只在let命令所在的代码块{}内生效，在{}之外不能访问。</p>
+<p>​    使用 <strong>var</strong> 关键字声明的变量在任何地方都可以修改；</p>
+<p>​    在相同的作用域或块级作用域中，不能使用 <strong>let</strong> 关键字来重置 <strong>var</strong> 关键字声明的变量；</p>
+<p>​    在相同的作用域或块级作用域中，不能使用 <strong>let</strong> 关键字来重置 <strong>let</strong> 关键字声明的变量；</p>
+<p>​    在相同的作用域或块级作用域中，不能使用 <strong>var</strong> 关键字来重置 <strong>let</strong> 关键字声明的变量；</p>
+<p>​    <strong>let</strong> 关键字在不同作用域，或不同块级作用域中是可以重新声明赋值的；</p>
+<p>​    <strong>let</strong> 关键字定义的变量则不可以在使用后声明，也就是变量需要先声明再使用，<strong>const</strong>也是；</p>
+<p>​    <strong>const</strong> 用于声明一个或多个常量，声明时必须进行初始化，且初始化后值不可再修改；</p>
+<p>​    <strong>const</strong>定义常量与使用<strong>let</strong> 定义的变量相似:二者都是块级作用域，都不能和它所在作用域内的其他变量或函数拥有相同的名称。他们的区别：<strong>const</strong>声明的常量必须初始化，而<strong>let</strong>声明的变量不用，<strong>const</strong> 定义常量的值不能通过再赋值修改，也不能再次声明。而 <strong>let</strong> 定义的变量值可以修改。</p>
+<p>​    <strong>const 的本质</strong>: <strong>const 定义的变量并非常量，并非不可变，它定义了一个常量引用一个值</strong>。使用 const 定义的对象或者数组，其实是可变的，例如：</p>
+<p>​        const car = {type:”Fiat”, model:”500”, color:”white”};  </p>
+<p>​        car.color = “red”;  </p>
+<p>​        car.owner = “Johnson”;</p>
+<p>​        例子2：</p>
+<p>​        const cars = [“Saab”, “Volvo”, “BMW”];</p>
+<p>​        cars[0] = “Toyota”;</p>
+<p>​        cars.push(“Audi”);</p>
+<p>​        但是我们<strong>不能对常量数组重新赋值</strong>。</p>
+<h4 id="6、JavaScript-JSON"><a href="#6、JavaScript-JSON" class="headerlink" title="6、JavaScript-JSON"></a>6、JavaScript-JSON</h4><p>​    JSON是用于存储和传输数据的格式,通常用于服务端向网页传递数据,json使用js语法，但是JSON格式仅仅是一个文本，文本可以被任何编程语言读取及作为数据格式传递。 </p>
+<p>​    JOSN字符串转换为javascript对象：创建JavaScript 字符串，字符串为 JSON 格式的数据，使用 JavaScript 内置函数 JSON.parse() 将字符串转换为 JavaScript 对象。JSON.stringify() 方法用于将 JavaScript 值转换为 JSON 字符串。</p>
+
+    </div>
+
+    
+    
+    
+	<div>
+		
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+		
+	</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/js/" rel="tag"># -js</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/10/css%E5%8F%8Acss3%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86-%E6%9D%82%E8%AE%B0/" rel="prev" title="css及css3笔记整理-杂记1">
+      <i class="fa fa-chevron-left"></i> css及css3笔记整理-杂记1
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-javaScript字符串："><span class="nav-number">1.</span> <span class="nav-text">1.javaScript字符串：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-javaScript数据类型"><span class="nav-number">2.</span> <span class="nav-text">2.javaScript数据类型;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-javaScript变量提升与严格模式："><span class="nav-number">3.</span> <span class="nav-text">3.javaScript变量提升与严格模式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-javaScript-this关键字"><span class="nav-number">4.</span> <span class="nav-text">4.javaScript this关键字:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-javaScript中的-let和const"><span class="nav-number">5.</span> <span class="nav-text">5.javaScript中的 let和const</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、JavaScript-JSON"><span class="nav-number">6.</span> <span class="nav-text">6、JavaScript-JSON</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="D.Xia"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">D.Xia</p>
+  <div class="site-description" itemprop="description">Fairy music flutters everywhere</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xdd970706" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xdd970706" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+		<div class="musicPlayer">
+			<iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=432430716&auto=1&height=66"></iframe>
+		</div>
+		<div id="days"></div>
+		<script>
+			function show_date_time(){
+			window.setTimeout("show_date_time()", 1000);
+			BirthDay=new Date("06/06/2020 12:13:14");
+			today=new Date();
+			timeold=(today.getTime()-BirthDay.getTime());
+			sectimeold=timeold/1000
+			secondsold=Math.floor(sectimeold);
+			msPerDay=24*60*60*1000
+			e_daysold=timeold/msPerDay
+			daysold=Math.floor(e_daysold);
+			e_hrsold=(e_daysold-daysold)*24;
+			hrsold=setzero(Math.floor(e_hrsold));
+			e_minsold=(e_hrsold-hrsold)*60;
+			minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+			seconds=setzero(Math.floor((e_minsold-minsold)*60));
+			document.getElementById('days').innerHTML="已运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+		}
+		function setzero(i) {
+			if (i<10) {
+				i="0" + i
+			};
+				return i;
+		}
+			show_date_time();
+		</script>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">D.Xia</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
