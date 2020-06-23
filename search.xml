@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>日常笔记-杂记4</title>
+      <link href="/2020/06/22/%E6%97%A5%E5%B8%B8%E7%AC%94%E8%AE%B0-%E6%9D%82%E8%AE%B04/"/>
+      <url>/2020/06/22/%E6%97%A5%E5%B8%B8%E7%AC%94%E8%AE%B0-%E6%9D%82%E8%AE%B04/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="1-透明的三种方式："><a href="#1-透明的三种方式：" class="headerlink" title="1.透明的三种方式："></a>1.透明的三种方式：</h4><p>​    1.display:none</p><p>​    2.visibility</p><p>​    3.opacity:0</p><h4 id="2-清除浮动的方法"><a href="#2-清除浮动的方法" class="headerlink" title="2.清除浮动的方法:"></a>2.清除浮动的方法:</h4><p>​    1.</p><h4 id="表格的高级属性"><a href="#表格的高级属性" class="headerlink" title="表格的高级属性:"></a>表格的高级属性:</h4><p>​    1.<caption>表格的标题</caption></p><p>​    2.<th>表格表头的标题</th></p><p>​    3.<thead>表头</thead>、<tbody>表体</tbody>、<tfoot>表尾</tfoot></p><p>​    4.rules:表格添加分组线，属性值:”all””cols””rows””groups”</p><p>​    5.数据列分组:<colgroup span="value"></colgroup>,将表格分组</p><p>​    6.border-spacing:单元格与单元格之间的距离(css属性)</p><p>​    7.合并表格边框:border-collapse:collapse(css属性)</p><p>​    8.表格固定:table-layout:fixed(css属性)</p><p>​    9.无内容时表格的行为:visibility:hiddeng</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> -html -css </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>js笔记整理-杂记2</title>
       <link href="/2020/06/12/js%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86-%E6%9D%82%E8%AE%B02/"/>
       <url>/2020/06/12/js%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86-%E6%9D%82%E8%AE%B02/</url>
