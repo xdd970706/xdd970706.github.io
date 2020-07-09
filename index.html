@@ -190,6 +190,174 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/09/js%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="D.Xia">
+      <meta itemprop="description" content="Fairy music flutters everywhere">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xd|前端日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/09/js%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="post-title-link" itemprop="url">js进阶学习笔记1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-09 09:40:44 / 修改时间：20:55:33" itemprop="dateCreated datePublished" datetime="2020-07-09T09:40:44+08:00">2020-07-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="1-函数"><a href="#1-函数" class="headerlink" title="1.函数"></a>1.函数</h5><h6 id="1-1函数的3种定义方法"><a href="#1-1函数的3种定义方法" class="headerlink" title="1.1函数的3种定义方法"></a>1.1函数的3种定义方法</h6><p>1.1.1函数声明</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES5</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSum</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;<span class="comment">//匿名函数</span></span><br><span class="line"><span class="comment">//ES6</span></span><br><span class="line">()=&gt;&#123;&#125;<span class="comment">//如果&#123;&#125;内容只有一行&#123;&#125;和return关键字可省</span></span><br></pre></td></tr></table></figure>
+
+<p>1.1.2函数表达式（函数字面量）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES5</span></span><br><span class="line"><span class="keyword">var</span> sum=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="comment">//ES6</span></span><br><span class="line"><span class="keyword">let</span> sum=<span class="function"><span class="params">()</span>=&gt;</span>&#123;&#125;<span class="comment">//如果&#123;&#125;内容只有一行&#123;&#125;和return关键字可省,</span></span><br></pre></td></tr></table></figure>
+
+<p>1.1.3构造函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sum = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'a'</span>, <span class="string">'b'</span> , <span class="string">'return a + b'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>1.1.4三种方法的对比：</p>
+<p>函数声明有预解析，而且函数声明的优先级高于变量；使用函数构造函数定义函数的方式是一个函数表达式，这种方式会导致解析两次代码，影响性能。第一次解析常规的JavaScript代码，第二次解析重构构造函数的字符串。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/09/js%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/JavaScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="D.Xia">
+      <meta itemprop="description" content="Fairy music flutters everywhere">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xd|前端日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/07/JavaScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">JavaScript基础知识整理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-07 10:22:03 / 修改时间：17:54:04" itemprop="dateCreated datePublished" datetime="2020-07-07T10:22:03+08:00">2020-07-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">-学习笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="1、数据类型"><a href="#1、数据类型" class="headerlink" title="1、数据类型"></a>1、数据类型</h5><p>基本数据类型：number（数值型）、string（字符串）、Boolean（布尔类型）、null（空型）、undefined（未定义型）</p>
+<p>引用数据类型：array（数组类型）、object（对象类型）、function（函数类型）</p>
+<p>Symbol:es6新引入数据类型，表示独一无二的值；</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/07/JavaScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/06/JS%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -213,10 +381,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-07-06 19:47:33 / 修改时间：20:49:26" itemprop="dateCreated datePublished" datetime="2020-07-06T19:47:33+08:00">2020-07-06</time>
+              <time title="创建时间：2020-07-06 19:47:33" itemprop="dateCreated datePublished" datetime="2020-07-06T19:47:33+08:00">2020-07-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-08 11:57:52" itemprop="dateModified" datetime="2020-07-08T11:57:52+08:00">2020-07-08</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -437,198 +611,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/28/flex%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="D.Xia">
-      <meta itemprop="description" content="Fairy music flutters everywhere">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xd|前端日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/28/flex%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/" class="post-title-link" itemprop="url">flex弹性布局详细知识点整理</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-06-28 16:47:49 / 修改时间：16:56:46" itemprop="dateCreated datePublished" datetime="2020-06-28T16:47:49+08:00">2020-06-28</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 align="center">弹性盒布局（flexbox）</h3>
-
-<hr>
-<h4 id="一、弹性盒布局介绍"><a href="#一、弹性盒布局介绍" class="headerlink" title="一、弹性盒布局介绍"></a>一、弹性盒布局介绍</h4><p>1)弹性盒也叫伸缩布局盒模型  </p>
-<p>它是<strong><span>css3</span></strong>引入的一种新的布局模式——<strong><span>flexbox</span></strong>布局，即伸缩布局盒模型，用来提供一个更有效的方式制定、调整和分布一个容器里的项目布局。相比之前的布局方式，更便利于开发。</p>
-<p>2)主要思想是让容器有能力让其子项目能够改变其宽度、高度（甚至顺序），以最佳的方式填充可用空间（主要是为了适应所有类型的显示设备和屏幕大小）。flex容器会使子项目扩展来填充可用空间，或缩小他们以防止溢出容器。</p>
-<p>3)专业术语解释</p>
-<p>a、主轴-水平方向或者X轴</p>
-<p>b、侧轴-垂直方向或者Y轴</p>
-<p>c、伸缩容器（父元素）和伸缩项目（子元素）</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/06/28/flex%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-	<div>
-		
-	</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/%E6%97%A5%E5%B8%B8%E7%AC%94%E8%AE%B0-%E6%9D%82%E8%AE%B04/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="D.Xia">
-      <meta itemprop="description" content="Fairy music flutters everywhere">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xd|前端日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/22/%E6%97%A5%E5%B8%B8%E7%AC%94%E8%AE%B0-%E6%9D%82%E8%AE%B04/" class="post-title-link" itemprop="url">html和css的一些方法-杂记4</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-22 15:36:02" itemprop="dateCreated datePublished" datetime="2020-06-22T15:36:02+08:00">2020-06-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-04 11:14:34" itemprop="dateModified" datetime="2020-07-04T11:14:34+08:00">2020-07-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="1-透明的三种方式："><a href="#1-透明的三种方式：" class="headerlink" title="1.透明的三种方式："></a>1.透明的三种方式：</h4><p>​    1.display:none;</p>
-<p>​    2.visibility:hidden;</p>
-<p>​    3.opacity:0;</p>
-<h4 id="2-清除浮动的方法"><a href="#2-清除浮动的方法" class="headerlink" title="2.清除浮动的方法:"></a>2.清除浮动的方法:</h4><p>​    1.额外标签法:在需要清除浮动的标签后面额外添加一个空白标签，并添加属性clear:both;</p>
-<p>​    2.给父级添加overflow属性，触发BFC的方式，实现清除浮动效果，但是当内容增多时，不会导致自动换行</p>
-<p>​    3.使用after伪元素清除浮动,IE6-7不支持,使用zoom:1,触发hasLayout;</p>
-<p>​        .clearfix::after{</p>
-<p>​            content:””;</p>
-<p>​            display:block;</p>
-<p>​            height:0;</p>
-<p>​            clear:both;</p>
-<p>​            visibility:hidden;</p>
-<p>​        }</p>
-<p>​        .clearfix{</p>
-<p>​        zoom:1;</p>
-<p>}    </p>
-<p>​    注意是给需要清除浮动元素的父亲添加.clearfix;</p>
-<p>​    4.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/06/22/%E6%97%A5%E5%B8%B8%E7%AC%94%E8%AE%B0-%E6%9D%82%E8%AE%B04/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-	<div>
-		
-	</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -696,14 +682,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

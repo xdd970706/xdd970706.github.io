@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":10,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1.函数1.1函数的3种定义方法1.1.1函数声明 12345&#x2F;&#x2F;ES5function getSum()&amp;#123;&amp;#125;function ()&amp;#123;&amp;#125;&#x2F;&#x2F;匿名函数&#x2F;&#x2F;ES6()&#x3D;&gt;&amp;#123;&amp;#125;&#x2F;&#x2F;如果&amp;#123;&amp;#125;内容只有一行&amp;#123;&amp;#125;和return关键字可省  1.1.2函数表达式（函数字面量） 1234&#x2F;&#x2F;ES5var sum">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js进阶学习笔记1">
+<meta property="og:url" content="http://yoursite.com/2020/07/09/js%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/index.html">
+<meta property="og:site_name" content="xd|前端日记">
+<meta property="og:description" content="1.函数1.1函数的3种定义方法1.1.1函数声明 12345&#x2F;&#x2F;ES5function getSum()&amp;#123;&amp;#125;function ()&amp;#123;&amp;#125;&#x2F;&#x2F;匿名函数&#x2F;&#x2F;ES6()&#x3D;&gt;&amp;#123;&amp;#125;&#x2F;&#x2F;如果&amp;#123;&amp;#125;内容只有一行&amp;#123;&amp;#125;和return关键字可省  1.1.2函数表达式（函数字面量） 1234&#x2F;&#x2F;ES5var sum">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-09T01:40:44.000Z">
+<meta property="article:modified_time" content="2020-07-09T12:55:33.035Z">
+<meta property="article:author" content="D.Xia">
+<meta property="article:tag" content="-js">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/07/09/js%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>js进阶学习笔记1 | xd|前端日记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xd|前端日记</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/09/js%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="D.Xia">
+      <meta itemprop="description" content="Fairy music flutters everywhere">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xd|前端日记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          js进阶学习笔记1
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-09 09:40:44 / 修改时间：20:55:33" itemprop="dateCreated datePublished" datetime="2020-07-09T09:40:44+08:00">2020-07-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h5 id="1-函数"><a href="#1-函数" class="headerlink" title="1.函数"></a>1.函数</h5><h6 id="1-1函数的3种定义方法"><a href="#1-1函数的3种定义方法" class="headerlink" title="1.1函数的3种定义方法"></a>1.1函数的3种定义方法</h6><p>1.1.1函数声明</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES5</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSum</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;<span class="comment">//匿名函数</span></span><br><span class="line"><span class="comment">//ES6</span></span><br><span class="line">()=&gt;&#123;&#125;<span class="comment">//如果&#123;&#125;内容只有一行&#123;&#125;和return关键字可省</span></span><br></pre></td></tr></table></figure>
+
+<p>1.1.2函数表达式（函数字面量）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ES5</span></span><br><span class="line"><span class="keyword">var</span> sum=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="comment">//ES6</span></span><br><span class="line"><span class="keyword">let</span> sum=<span class="function"><span class="params">()</span>=&gt;</span>&#123;&#125;<span class="comment">//如果&#123;&#125;内容只有一行&#123;&#125;和return关键字可省,</span></span><br></pre></td></tr></table></figure>
+
+<p>1.1.3构造函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sum = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'a'</span>, <span class="string">'b'</span> , <span class="string">'return a + b'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>1.1.4三种方法的对比：</p>
+<p>函数声明有预解析，而且函数声明的优先级高于变量；使用函数构造函数定义函数的方式是一个函数表达式，这种方式会导致解析两次代码，影响性能。第一次解析常规的JavaScript代码，第二次解析重构构造函数的字符串。</p>
+<a id="more"></a>
+
+<h6 id="1-2ES5中函数的4种调用"><a href="#1-2ES5中函数的4种调用" class="headerlink" title="1.2ES5中函数的4种调用"></a>1.2<strong>ES5中函数的4种调用</strong></h6><p>在ES5中函数内容的此指向和调用方法有关</p>
+<p>1.2.1函数调用模式</p>
+<p>包括函数名（）和匿名函数调用，此指向窗口</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">//这个属于函数名调用，this指向window</span></span><br><span class="line"> &#125;</span><br><span class="line"> getSum()</span><br><span class="line"> </span><br><span class="line"> (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">//匿名函数调用，this指向window</span></span><br><span class="line"> &#125;)()</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">var</span> getSum=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">//实际上也是函数名调用，window</span></span><br><span class="line"> &#125;</span><br><span class="line"> getSum()</span><br></pre></td></tr></table></figure>
+
+<p>1.2.2方法调用</p>
+<p>对象.方法名（），此指向对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> objList = &#123;</span><br><span class="line">   name: <span class="string">'methods'</span>,</span><br><span class="line">   getSum: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">//objList对象</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">objList.getSum()</span><br></pre></td></tr></table></figure>
+
+<p>1.2.3构造器调用</p>
+<p>new构造函数名()，此指向实例化的对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">//是构造函数调用，指向实例化的对象personOne</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> personOne = <span class="keyword">new</span> Person();</span><br></pre></td></tr></table></figure>
+
+<p>1.2.4初始化调用</p>
+<p>利用call和apply来实现，this就是call和apply对应的第一个参数，如果不传值或者第一个变量为空，未定义时此指向窗口通过call / apply如果第一个参数是string，number，布尔值，请调用内部会调用其相应的构造器String，Numer，Boolean将其转换为相应的实例对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;   </span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo.apply(<span class="string">'我是apply改变的this值'</span>);<span class="comment">//我是apply改变的this值</span></span><br><span class="line">foo.call(<span class="string">'我是call改变的this值'</span>);<span class="comment">//我是call改变的this值</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="1-3ES6中函数的调用"><a href="#1-3ES6中函数的调用" class="headerlink" title="1.3ES6中函数的调用"></a>1.3ES6中函数的调用</h6><p>箭头函数不可以考虑构造函数使用，也就是不能用新命令实列化一个对象，否则就会引发一个错误箭头函数的                                 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>)<span class="comment">//window</span></span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arrowFun = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>)<span class="comment">//window</span></span><br><span class="line">&#125;</span><br><span class="line">arrowFun()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arrowObj = &#123;</span><br><span class="line">  arrFun: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   (<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="keyword">this</span>)<span class="comment">//this指向的是arrowObj对象</span></span><br><span class="line">   &#125;)()</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> arrowObj.arrFun();</span><br></pre></td></tr></table></figure>
+
+<h6 id="1-4call，apply和bind"><a href="#1-4call，apply和bind" class="headerlink" title="1.4call，apply和bind"></a>1.4call，apply和bind</h6><p>1.IE5之前不支持call和apply，bind是ES5出来的；call和apply可以调用函数，更改此值，实现继承和借用别的对象的方法；</p>
+<p>1.4.1调用和应用定义</p>
+<p>调用方法，用一个对象替换掉另一个对象（this）对象.call(新this对象，实参1，实参2，实参3，……)对象.apply(新this对象,[实参1，实参2，实参3……]);bind除了返回的是函数以外，它的参数和call一样。</p>
+<p>1.4.2致电和申请</p>
+<p>间接调用函数，更改作用域的此值；劫持其他对象的方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">  name:<span class="string">"张三"</span>,</span><br><span class="line">  logName:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> bar=&#123;</span><br><span class="line">  name:<span class="string">"李四"</span></span><br><span class="line">&#125;;</span><br><span class="line">foo.logName.call(bar);<span class="comment">//李四</span></span><br><span class="line">实质是call改变了foo的<span class="keyword">this</span>指向为bar,并调用该函数</span><br></pre></td></tr></table></figure>
+
+<p>2.两个函数实现继承</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name</span>)</span>&#123;   </span><br><span class="line">  <span class="keyword">this</span>.name = name;   </span><br><span class="line">  <span class="keyword">this</span>.showName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;   </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);   </span><br><span class="line">  &#125;   </span><br><span class="line">&#125;   </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;  </span><br><span class="line">  Animal.call(<span class="keyword">this</span>, name);  </span><br><span class="line">&#125;    </span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat(<span class="string">"Black Cat"</span>);   </span><br><span class="line">cat.showName(); <span class="comment">//Black Cat</span></span><br></pre></td></tr></table></figure>
+
+<p>3.为枚举(参数和nodeList)添加多个方法push,pop</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">Array</span>.prototype.push.call(<span class="built_in">arguments</span>,<span class="string">'王五'</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);<span class="comment">//['张三','李四','王五']</span></span><br><span class="line">&#125;)(<span class="string">'张三'</span>,<span class="string">'李四'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>4.合并时间表</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]; </span><br><span class="line"><span class="keyword">let</span> arr2=[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]; </span><br><span class="line"><span class="built_in">Array</span>.prototype.push.apply(arr1,arr2);</span><br></pre></td></tr></table></figure>
+
+<p>5.求整数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.max.apply(<span class="literal">null</span>,arr)</span><br></pre></td></tr></table></figure>
+
+<p>6.<strong>判断字符类型</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.toString.call(&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>1.4.3绑定</p>
+<p>bind是功能的一个函数扩展方法</p>
+<p>bind以后的代码重新绑定了func内部的此指向，返回一个函数，不会调用方法，不兼容IE8</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'李四'</span></span><br><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">   name: <span class="string">"张三"</span>,</span><br><span class="line">   logName: <span class="function"><span class="keyword">function</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>.name, age);</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">var</span> fooNew = foo.logName;</span><br><span class="line"> <span class="keyword">var</span> fooNewBind = 		  foo.logName.bind(foo);</span><br><span class="line"> fooNew(<span class="number">10</span>)<span class="comment">//李四,10</span></span><br><span class="line"> fooNewBind(<span class="number">11</span>)<span class="comment">//张三,11  因为bind改变了fooNewBind里面的this指向</span></span><br></pre></td></tr></table></figure>
+
+<p>1.4.4通话，申请和绑定原生实现</p>
+<p>呼叫实现:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.newCall = <span class="function"><span class="keyword">function</span>(<span class="params">context, ...parameter</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">if</span> (<span class="keyword">typeof</span> context === <span class="string">'object'</span> || <span class="keyword">typeof</span> context === <span class="string">'function'</span>) &#123;</span><br><span class="line">    context = context || <span class="built_in">window</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    context = <span class="built_in">Object</span>.create(<span class="literal">null</span>)</span><br><span class="line">&#125;</span><br><span class="line">  context[fn] = <span class="keyword">this</span>  </span><br><span class="line">  <span class="keyword">const</span> res =context[fn](...parameter)</span><br><span class="line">  <span class="keyword">delete</span> context.fn;</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">  name: <span class="string">'Abiel'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">age,sex</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name, age, sex);</span><br><span class="line">&#125;</span><br><span class="line">sayHi.newCall (person, <span class="number">25</span>, <span class="string">'男'</span>); <span class="comment">// Abiel 25 男</span></span><br></pre></td></tr></table></figure>
+
+<p>应用实现:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.newApply = <span class="function"><span class="keyword">function</span>(<span class="params">context, parameter</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> context === <span class="string">'object'</span> || <span class="keyword">typeof</span> context === <span class="string">'function'</span>) &#123;</span><br><span class="line">    context = context || <span class="built_in">window</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    context = <span class="built_in">Object</span>.create(<span class="literal">null</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> fn = <span class="built_in">Symbol</span>()</span><br><span class="line">  context[fn] = <span class="keyword">this</span></span><br><span class="line">  <span class="keyword">const</span> res=context[fn](...parameter);</span><br><span class="line">  <span class="keyword">delete</span> context[fn]</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line">    <span class="keyword">let</span> person = &#123;</span><br><span class="line">    name: <span class="string">"Abiel"</span></span><br><span class="line">  &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">age, sex</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name, age, sex);</span><br><span class="line">  &#125;</span><br><span class="line">    sayHi.newApply (person,[ <span class="number">25</span>, <span class="string">'男'</span>]) <span class="comment">//Abiel 25 男</span></span><br></pre></td></tr></table></figure>
+
+<p>call和apply封装对比区别：实际上核心代码是一样的，只不过call需要对第二个形参解构</p>
+<p>bind实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.bind = <span class="function"><span class="keyword">function</span> (<span class="params">context,...innerArgs</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> me = <span class="keyword">this</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">...finnalyArgs</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> me.call(context,...innerArgs,...finnalyArgs)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">  name: <span class="string">'Abiel'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params">age,sex</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name, age, sex);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> personSayHi = sayHi.bind(person, <span class="number">25</span>)</span><br><span class="line">personSayHi(<span class="string">'男'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>1.4.5三者异同</p>
+<p>都是改变this指向，都可以接收参数；bind和call是接收离散参数，apply是接收数组。</p>
+<h6 id="1-5函数的节流和防抖"><a href="#1-5函数的节流和防抖" class="headerlink" title="1.5函数的节流和防抖"></a>1.5函数的节流和防抖</h6><p>节流:事件触发后每隔触发触发一次，可触发多次</p>
+<p>防抖：事件触发动作完成后重新触发一次</p>
+<p>1.5.1节流例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// html 部分</span></span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    *&#123;<span class="attr">padding</span>:<span class="number">0</span>;margin:<span class="number">0</span>;&#125;</span><br><span class="line">    .scroll-box&#123;</span><br><span class="line">        width : <span class="number">100</span>%;</span><br><span class="line">        height : <span class="number">500</span>px;</span><br><span class="line">        background:blue;</span><br><span class="line">        overflow : auto;</span><br><span class="line">    &#125;    </span><br><span class="line">    .scroll-item&#123;</span><br><span class="line">        height:<span class="number">1000</span>px;</span><br><span class="line">        width:<span class="number">100</span>%;</span><br><span class="line">    &#125;</span><br><span class="line"> &lt;<span class="regexp">/style&gt;</span></span><br><span class="line"><span class="regexp">    &lt;body&gt;</span></span><br><span class="line"><span class="regexp">    	&lt;div class="scroll-box"&gt;</span></span><br><span class="line"><span class="regexp">        	&lt;div class="scroll-item"&gt;&lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>body&gt;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// js 部分</span></span><br><span class="line">    <span class="keyword">let</span> throttle = <span class="function"><span class="keyword">function</span> (<span class="params">func, delay</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (!timer) &#123;</span><br><span class="line">        timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          func.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">          <span class="comment">// 或者直接 func()</span></span><br><span class="line">          timer = <span class="literal">null</span>;</span><br><span class="line">        &#125;, delay);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 处理函数</span></span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">handle</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">Math</span>.random());</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="comment">// 测试用例</span></span><br><span class="line">    <span class="built_in">document</span>.getElementsByClassName(<span class="string">'scroll-box'</span>)[<span class="number">0</span>].addEventListener(<span class="string">"scroll"</span>, throttle(handle,<span class="number">3000</span>));</span><br></pre></td></tr></table></figure>
+
+<p>1.5.2防抖</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// html 部分同上</span></span><br><span class="line">    <span class="comment">// js 部分</span></span><br><span class="line">    <span class="keyword">let</span> debounce = <span class="function"><span class="keyword">function</span> (<span class="params">fn, wait</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timeout = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (timeout !== <span class="literal">null</span>) clearTimeout(timeout);<span class="comment">//如果多次触发将上次记录延迟清除掉</span></span><br><span class="line">      timeout = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">        <span class="comment">// 或者直接 fn()</span></span><br><span class="line">        timeout = <span class="literal">null</span>;</span><br><span class="line">      &#125;, wait);</span><br><span class="line">    &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="comment">// 处理函数</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handle</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">Math</span>.random());</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 测试用例</span></span><br><span class="line">  <span class="built_in">document</span>.getElementsByClassName(<span class="string">'scroll-box'</span>)[<span class="number">0</span>].addEventListener(<span class="string">"scroll"</span>, debounce(handle, <span class="number">3000</span>));</span><br></pre></td></tr></table></figure>
+
+<h6 id="1-6原型链"><a href="#1-6原型链" class="headerlink" title="1.6原型链"></a>1.6原型链</h6><p>1.6.1定义</p>
+<p>对象继承属性的一个链条</p>
+<p>1.6.2构造函数，实例与原型对象的关系</p>
+<p>如图</p>
+<p>原型对象都有一个默认的构造函数属性指向构造函数。</p>
+<p>1.6.3创建实例的方法</p>
+<p>字面量</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj=&#123;<span class="string">'name'</span>:<span class="string">'张三'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对象构造函数创建</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> Obj=<span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line">Obj.name=<span class="string">'张三'</span></span><br></pre></td></tr></table></figure>
+
+<p>使用工厂模式创建对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line"> <span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"> o.name = name;</span><br><span class="line"> <span class="keyword">return</span> o; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = createPerson(<span class="string">'张三'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>使用构造函数创建对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line"> <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">'张三'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>1.6.4new运算符</p>
+<p>创建一个新对象</p>
+<p>this指向构造函数</p>
+<p>构造函数有返回，会替换new出来的对象，如果没有就是new出来的对象</p>
+<p>手动封装一个new运算符</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> new2 = <span class="function"><span class="keyword">function</span> (<span class="params">func</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> o = <span class="built_in">Object</span>.create(func.prototype);<span class="comment">//创建对象</span></span><br><span class="line">    <span class="keyword">var</span> k = func.call(o);<span class="comment">//改变this指向，把结果付给k</span></span><br><span class="line">    <span class="keyword">if</span> (k &amp;&amp; k <span class="keyword">instanceof</span> <span class="built_in">Object</span>) &#123;<span class="comment">//判断k的类型是不是对象</span></span><br><span class="line">        <span class="keyword">return</span> k;&amp;emsp;<span class="comment">//是，返回k</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> o;<span class="comment">//不是返回返回构造函数的执行结果</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1.6.5对象的原型链</p>
+
+    </div>
+
+    
+    
+    
+	<div>
+		
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+		
+	</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/js/" rel="tag"># -js</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/07/JavaScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="prev" title="JavaScript基础知识整理">
+      <i class="fa fa-chevron-left"></i> JavaScript基础知识整理
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-函数"><span class="nav-number">1.</span> <span class="nav-text">1.函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-1函数的3种定义方法"><span class="nav-number">1.1.</span> <span class="nav-text">1.1函数的3种定义方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-2ES5中函数的4种调用"><span class="nav-number">1.2.</span> <span class="nav-text">1.2ES5中函数的4种调用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-3ES6中函数的调用"><span class="nav-number">1.3.</span> <span class="nav-text">1.3ES6中函数的调用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-4call，apply和bind"><span class="nav-number">1.4.</span> <span class="nav-text">1.4call，apply和bind</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-5函数的节流和防抖"><span class="nav-number">1.5.</span> <span class="nav-text">1.5函数的节流和防抖</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-6原型链"><span class="nav-number">1.6.</span> <span class="nav-text">1.6原型链</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="D.Xia"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">D.Xia</p>
+  <div class="site-description" itemprop="description">Fairy music flutters everywhere</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xdd970706" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xdd970706" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+		<div class="musicPlayer">
+			<iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=432430716&auto=1&height=66"></iframe>
+		</div>
+		<div id="days"></div>
+		<script>
+			function show_date_time(){
+			window.setTimeout("show_date_time()", 1000);
+			BirthDay=new Date("06/06/2020 12:13:14");
+			today=new Date();
+			timeold=(today.getTime()-BirthDay.getTime());
+			sectimeold=timeold/1000
+			secondsold=Math.floor(sectimeold);
+			msPerDay=24*60*60*1000
+			e_daysold=timeold/msPerDay
+			daysold=Math.floor(e_daysold);
+			e_hrsold=(e_daysold-daysold)*24;
+			hrsold=setzero(Math.floor(e_hrsold));
+			e_minsold=(e_hrsold-hrsold)*60;
+			minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+			seconds=setzero(Math.floor((e_minsold-minsold)*60));
+			document.getElementById('days').innerHTML="已运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+		}
+		function setzero(i) {
+			if (i<10) {
+				i="0" + i
+			};
+				return i;
+		}
+			show_date_time();
+		</script>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">D.Xia</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
