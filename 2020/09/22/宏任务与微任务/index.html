@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":10,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1.透明的三种方式：​    1.display:none; ​    2.visibility:hidden; ​    3.opacity:0; 2.清除浮动的方法:​    1.额外标签法:在需要清除浮动的标签后面额外添加一个空白标签，并添加属性clear:both; ​    2.给父级添加overflow属性，触发BFC的方式，实现清除浮动效果，但是当内容增多时，不会导致自动换行 ​">
+  <meta name="description" content="JavaScript是单线程应用程序，只有当一条语句执行结束后才能执行下一条语句，所以再之前用alert()会阻塞JavaScript的执行。 假如全部的代码都是同步执行，那么将会引发很严重的问题，比如从服务器获取数据，需要一直去循环判断是否拿到了服务器返回来的数据吗？ 所以就有了异步事件的概念，在向服务器请求数据，只需发送请求，不必等着响应返回，让主程序在响应返回后通知我们，这样就可以继续执行其">
 <meta property="og:type" content="article">
-<meta property="og:title" content="html和css的一些方法-杂记4">
-<meta property="og:url" content="http://yoursite.com/2020/06/22/%E6%97%A5%E5%B8%B8%E7%AC%94%E8%AE%B0-%E6%9D%82%E8%AE%B04/index.html">
+<meta property="og:title" content="宏任务与微任务">
+<meta property="og:url" content="http://yoursite.com/2020/09/22/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%BE%AE%E4%BB%BB%E5%8A%A1/index.html">
 <meta property="og:site_name" content="xd|前端日记">
-<meta property="og:description" content="1.透明的三种方式：​    1.display:none; ​    2.visibility:hidden; ​    3.opacity:0; 2.清除浮动的方法:​    1.额外标签法:在需要清除浮动的标签后面额外添加一个空白标签，并添加属性clear:both; ​    2.给父级添加overflow属性，触发BFC的方式，实现清除浮动效果，但是当内容增多时，不会导致自动换行 ​">
+<meta property="og:description" content="JavaScript是单线程应用程序，只有当一条语句执行结束后才能执行下一条语句，所以再之前用alert()会阻塞JavaScript的执行。 假如全部的代码都是同步执行，那么将会引发很严重的问题，比如从服务器获取数据，需要一直去循环判断是否拿到了服务器返回来的数据吗？ 所以就有了异步事件的概念，在向服务器请求数据，只需发送请求，不必等着响应返回，让主程序在响应返回后通知我们，这样就可以继续执行其">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-22T07:36:02.000Z">
-<meta property="article:modified_time" content="2020-07-04T03:14:34.884Z">
+<meta property="article:published_time" content="2020-09-22T11:20:03.000Z">
+<meta property="article:modified_time" content="2020-09-22T12:11:41.365Z">
 <meta property="article:author" content="D.Xia">
-<meta property="article:tag" content="-前端">
+<meta property="article:tag" content="-js">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/06/22/%E6%97%A5%E5%B8%B8%E7%AC%94%E8%AE%B0-%E6%9D%82%E8%AE%B04/">
+<link rel="canonical" href="http://yoursite.com/2020/09/22/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%BE%AE%E4%BB%BB%E5%8A%A1/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>html和css的一些方法-杂记4 | xd|前端日记</title>
+  <title>宏任务与微任务 | xd|前端日记</title>
   
 
 
@@ -194,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/%E6%97%A5%E5%B8%B8%E7%AC%94%E8%AE%B0-%E6%9D%82%E8%AE%B04/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/22/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%BE%AE%E4%BB%BB%E5%8A%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          html和css的一些方法-杂记4
+          宏任务与微任务
         </h1>
 
         <div class="post-meta">
@@ -216,23 +216,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-06-22 15:36:02" itemprop="dateCreated datePublished" datetime="2020-06-22T15:36:02+08:00">2020-06-22</time>
+              <time title="创建时间：2020-09-22 19:20:03 / 修改时间：20:11:41" itemprop="dateCreated datePublished" datetime="2020-09-22T19:20:03+08:00">2020-09-22</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-04 11:14:34" itemprop="dateModified" datetime="2020-07-04T11:14:34+08:00">2020-07-04</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                  <a href="/categories/%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">-笔记整理</span></a>
                 </span>
             </span>
 
@@ -247,65 +241,46 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="1-透明的三种方式："><a href="#1-透明的三种方式：" class="headerlink" title="1.透明的三种方式："></a>1.透明的三种方式：</h4><p>​    1.display:none;</p>
-<p>​    2.visibility:hidden;</p>
-<p>​    3.opacity:0;</p>
-<h4 id="2-清除浮动的方法"><a href="#2-清除浮动的方法" class="headerlink" title="2.清除浮动的方法:"></a>2.清除浮动的方法:</h4><p>​    1.额外标签法:在需要清除浮动的标签后面额外添加一个空白标签，并添加属性clear:both;</p>
-<p>​    2.给父级添加overflow属性，触发BFC的方式，实现清除浮动效果，但是当内容增多时，不会导致自动换行</p>
-<p>​    3.使用after伪元素清除浮动,IE6-7不支持,使用zoom:1,触发hasLayout;</p>
-<p>​        .clearfix::after{</p>
-<p>​            content:””;</p>
-<p>​            display:block;</p>
-<p>​            height:0;</p>
-<p>​            clear:both;</p>
-<p>​            visibility:hidden;</p>
-<p>​        }</p>
-<p>​        .clearfix{</p>
-<p>​        zoom:1;</p>
-<p>}    </p>
-<p>​    注意是给需要清除浮动元素的父亲添加.clearfix;</p>
-<p>​    4.</p>
-<a id="more"></a>
+        <p><code>JavaScript</code>是<strong>单线程应用程序</strong>，只有当一条语句执行结束后才能执行下一条语句，所以再之前用<code>alert()</code>会阻塞<code>JavaScript</code>的执行。</p>
+<p>假如全部的代码都是同步执行，那么将会引发很严重的问题，比如从服务器获取数据，需要一直去循环判断是否拿到了服务器返回来的数据吗？</p>
+<p>所以就有了异步事件的概念，在向服务器请求数据，只需发送请求，不必等着响应返回，让主程序在响应返回后通知我们，这样就可以继续执行其它任务，而不会因为等待响应造成程序的阻塞。</p>
+<p>那么问题又来了，当应用中存在多个异步任务时，它们的执行顺序是怎样的呢？所以就有了<strong>宏任务</strong>和<strong>微任务</strong></p>
+<h6 id="宏任务和微任务是什么"><a href="#宏任务和微任务是什么" class="headerlink" title="宏任务和微任务是什么?"></a>宏任务和微任务是什么?</h6><hr>
+<p>宏任务通常叫做 <code>macrotask</code>，而微任务通常叫 <code>microtask</code>.</p>
+<p>举个例子来解释宏任务和微任务:</p>
+<p>去银行办理业务,首先需要取号等待排队,这些需要办理业务的人就可以看做是银行柜台的一个宏任务,在一个宏任务进行过程中,是可以添加微任务的,就比如A本来就想存个钱,当存钱的业务办理完后,他看到一个银行的理财项目不错,比把钱存着更香,所以他又要办理这个理财项目,但是柜台的工作人员会叫他重新去取号排队吗?当然不会,他会继续为A办理所有业务,而这些临时加的业务就可以看作是微任务,当这个宏任务的所有微任务执行完了,才会执行下个宏任务.</p>
+<p>代码实例:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>)</span><br><span class="line">  resolve()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">promise.then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-表格的高级属性"><a href="#3-表格的高级属性" class="headerlink" title="3.表格的高级属性:"></a>3.表格的高级属性:</h4><p>​    1.<caption>表格的标题</caption></p>
-<p>​    2.<th>表格表头的标题</th></p>
-<p>​    3.<thead>表头</thead>、<tbody>表体</tbody>、<tfoot>表尾</tfoot></p>
-<p>​    4.rules:表格添加分组线，属性值:”all””cols””rows””groups”</p>
-<p>​    5.数据列分组:<colgroup span="value"></colgroup>,将表格分组</p>
-<p>​    6.border-spacing:单元格与单元格之间的距离(css属性)</p>
-<p>​    7.合并表格边框:border-collapse:collapse(css属性)</p>
-<p>​    8.表格固定:table-layout:fixed(css属性)</p>
-<p>​    9.无内容时表格的行为:visibility:hiddeng</p>
-<h4 id="4-两种盒子模型"><a href="#4-两种盒子模型" class="headerlink" title="4.两种盒子模型"></a>4.两种盒子模型</h4><p>​    1.标准盒模型：border-box</p>
-<p>​    2.怪异盒模型:content-box</p>
-<h4 id="5-给文本与盒子添加阴影"><a href="#5-给文本与盒子添加阴影" class="headerlink" title="5.给文本与盒子添加阴影"></a>5.给文本与盒子添加阴影</h4><p>​    text-shadow:h-shadow v-shadow blur color;</p>
-<p>​    box-shadow:向框添加一个或多个阴影。</p>
-<h4 id="6-溢出文字用省略号显示"><a href="#6-溢出文字用省略号显示" class="headerlink" title="6.溢出文字用省略号显示"></a>6.溢出文字用省略号显示</h4><p>​    white-space:nowrap; 强制不换行，除了文本结束或者有换行标签</p>
-<p>​    overflow:hidden;</p>
-<p>​    text-overflow:ellipsis;</p>
-<h4 id="7-粘性定位："><a href="#7-粘性定位：" class="headerlink" title="7.粘性定位："></a>7.粘性定位：</h4><p>​    position:sticky;</p>
-<p>​    常用场景：吸顶效果                </p>
-<h4 id="8-大小写转换"><a href="#8-大小写转换" class="headerlink" title="8.大小写转换"></a>8.大小写转换</h4><p>​    text-transform:lowercase(大写转小写)</p>
-<p>​    text-transform:capitalize(首字母变大写)</p>
-<p>​    text-transform:uppercase(小写转大写)</p>
-<p>​    text-transform:font-variant(小型大写字体)</p>
-<h4 id="9-网页优化相关"><a href="#9-网页优化相关" class="headerlink" title="9.网页优化相关"></a>9.网页优化相关</h4><p>​    1.在实际开发中要求结构、表现、行为分开</p>
-<p>​    2.</p>
-<h4 id="10-BFC"><a href="#10-BFC" class="headerlink" title="10.BFC"></a>10.BFC</h4><p>​    1.在BFC下，内部的Box会在垂直方向，一个接一个地放置。</p>
-<p>​    2.Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠 </p>
-<p>​    3.在BFC中，每一个盒子的左外边缘（margin-left）会触碰到容器（父元素）的左边缘(border-left)（对于从右到左的格式来说，则触碰到右边缘），即使存在浮动也是如此。</p>
-<p>​    4.BFC的区域不会与float box重叠。例子：两个div，一个进行浮动，一个不浮动，这时浮动的元素会覆盖没有浮动的元素。给没有浮动的元素加overflow：hidden。就不会重合。/*–+ c’x</p>
-<p>​    5.计算BFC的高度时，浮动元素也参与计算</p>
-<p>​    如何触发 BFC</p>
-<p>​    1.浮动元素，float 除 none 以外的值</p>
-<p>​    2.position的值不为static或者relative</p>
-<p>​    3.display为inline-block、table-cell、table-caption</p>
-<p>​    4.overflow 除了 visible 以外的值</p>
-<p>​    BFC的应用</p>
-<p>​    1.解决浮动塌陷问题</p>
-<p>​    2.自适应两栏布局（我们还可以运用BFC可以阻止元素被浮动元素覆盖的特性来实现自适应两栏布局。方法：给没有浮动的元素加overflow：hidden。）</p>
-<p>​    3.解决设置margin值重叠问题。</p>
-<p>​    总结：BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。它规定了元素与其他元素的关系和相互作用。</p>
+<p>以上代码的打印结果是:</p>
+<p>1  3  5  4  2</p>
+<p>上述代码中，<code>setTimeout()</code> 就是作为宏任务存在的，而 <code>Promise.prototype.then</code> 则是具有代表性的微任务。注意，在 <code>new Promise()</code> 创建对象实例时所传递的函数是被同步执行的，而调用的 <code>then()</code> 方法中传递的函数才是被异步调用执行的。1 3 5 是同步代码打印的顺序,同步执行完成后开始执行异步任务,<strong>微任务会在宏任务之前执行</strong>,所以<code>promise.then()</code> 方法中注册的回调函数先被调用执行，输出 <code>4</code>，最后执行 <code>setTimeout()</code> 注册的回调函数打印 <code>2</code>。</p>
+<h6 id="宏任务"><a href="#宏任务" class="headerlink" title="宏任务"></a>宏任务</h6><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UI交互事件&#96;、&#96;setTimeout&#96;、&#96;setInterval&#96;、&#96;requestAnimationFrame&#96;、&#96;IO</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout&#96;、&#96;setInterval&#96;、&#96;setImmediate&#96;、&#96;IO</span><br></pre></td></tr></table></figure>
+
+<h6 id="微任务"><a href="#微任务" class="headerlink" title="微任务"></a>微任务</h6><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#96;Promise.prototype.then&#96;   &#96;Promise.prototype.catch&#96;、 &#96;Promise.prototype.finally&#96;、 &#96;MutationObserver&#96;</span><br></pre></td></tr></table></figure>
+
+<h6 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h6><hr>
+<p>在应用中添加宏任务与微任务通常有以下几种方式：</p>
+<ul>
+<li><p>在主线程上直接添加宏任务与微任务，这时的执行顺序为：</p>
+<p>主线程 =&gt; 主线程上创建的微任务 =&gt; 主线程上创建的宏任务</p>
+</li>
+<li><p>在微任务中创建微任务，执行顺序为：</p>
+<p>主线程 =&gt; 主线程上创建的微任务1 =&gt; 微任务1上创建的微任务2 =&gt; 主线程上创建的宏任务</p>
+</li>
+<li><p>在宏任务中创建微任务，执行顺序为：</p>
+<p>主线程 =&gt; 主线程上创建的宏任务 =&gt; 宏任务中创建的微任务</p>
+</li>
+<li><p>在微任务中创建宏任务，执行顺序为：</p>
+<p>主线程 =&gt; 主线程上创建的微任务 =&gt; 主线程上创建的宏任务 =&gt; 微任务中创建的宏任务</p>
+</li>
+</ul>
+<h6 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h6><hr>
+<p>关于宏任务与微任务的执行顺序：通常微任务队列优先于宏任务队列执行，<strong>微任务中创建的宏任务会被添加到宏任务队列的尾端</strong>，<strong>微任务中创建的微任务会被添加到微任务队列的尾端</strong>。<strong>只要微任务队列中还有任务，宏任务队列就要等待微任务队列执行完毕后再执行</strong>。</p>
 
     </div>
 
@@ -324,7 +299,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># -前端</a>
+              <a href="/tags/js/" rel="tag"># -js</a>
           </div>
 
         
@@ -333,13 +308,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/06/18/h5%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-%E6%9D%82%E8%AE%B03/" rel="prev" title="h5知识点整理-杂记3">
-      <i class="fa fa-chevron-left"></i> h5知识点整理-杂记3
+    <a href="/2020/09/18/JS%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" rel="prev" title="JS实现继承的几种方式">
+      <i class="fa fa-chevron-left"></i> JS实现继承的几种方式
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/06/28/flex%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/" rel="next" title="flex弹性布局详细知识点整理">
-      flex弹性布局详细知识点整理 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -398,7 +370,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-透明的三种方式："><span class="nav-number">1.</span> <span class="nav-text">1.透明的三种方式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-清除浮动的方法"><span class="nav-number">2.</span> <span class="nav-text">2.清除浮动的方法:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-表格的高级属性"><span class="nav-number">3.</span> <span class="nav-text">3.表格的高级属性:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-两种盒子模型"><span class="nav-number">4.</span> <span class="nav-text">4.两种盒子模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-给文本与盒子添加阴影"><span class="nav-number">5.</span> <span class="nav-text">5.给文本与盒子添加阴影</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-溢出文字用省略号显示"><span class="nav-number">6.</span> <span class="nav-text">6.溢出文字用省略号显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-粘性定位："><span class="nav-number">7.</span> <span class="nav-text">7.粘性定位：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-大小写转换"><span class="nav-number">8.</span> <span class="nav-text">8.大小写转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-网页优化相关"><span class="nav-number">9.</span> <span class="nav-text">9.网页优化相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-BFC"><span class="nav-number">10.</span> <span class="nav-text">10.BFC</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#宏任务和微任务是什么"><span class="nav-number">1.</span> <span class="nav-text">宏任务和微任务是什么?</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#宏任务"><span class="nav-number">2.</span> <span class="nav-text">宏任务</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#微任务"><span class="nav-number">3.</span> <span class="nav-text">微任务</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#执行顺序"><span class="nav-number">4.</span> <span class="nav-text">执行顺序</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
