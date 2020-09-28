@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":10,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1.核心each()：遍历jQuery对象 length：jQuery对象长度 get()：根据传入的下标获取对应的jQuery对象，返回的是一个js原生对象 index()：获取当前jQuery对象的下标 data(key，value)：获取或者设置jQuery对象的data-xxx属性值 2.属性attr() 获取或者设置jQuery对象的对应属性的属性值（区分与css()方法的区别) 该方法">
+  <meta name="description" content="什么是浏览器的缓存机制 指在一段有效时间内，保存已接收到的web资源副本，如果在有效时间内发起了对该资源的再一次请求，那么浏览器直接使用这个缓存的副本，而不是向服务器重新发起新的请求。 为什么要使用浏览器的缓存机制 可以有效地提高页面的打开速度，减少不必要的网络带宽的浪费，降低服务器的负担。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jQuery重点方法总结">
-<meta property="og:url" content="http://yoursite.com/2020/08/15/Jquery%E9%87%8D%E7%82%B9%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:title" content="浏览器的缓存机制">
+<meta property="og:url" content="http://yoursite.com/2020/09/28/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="xd|前端日记">
-<meta property="og:description" content="1.核心each()：遍历jQuery对象 length：jQuery对象长度 get()：根据传入的下标获取对应的jQuery对象，返回的是一个js原生对象 index()：获取当前jQuery对象的下标 data(key，value)：获取或者设置jQuery对象的data-xxx属性值 2.属性attr() 获取或者设置jQuery对象的对应属性的属性值（区分与css()方法的区别) 该方法">
+<meta property="og:description" content="什么是浏览器的缓存机制 指在一段有效时间内，保存已接收到的web资源副本，如果在有效时间内发起了对该资源的再一次请求，那么浏览器直接使用这个缓存的副本，而不是向服务器重新发起新的请求。 为什么要使用浏览器的缓存机制 可以有效地提高页面的打开速度，减少不必要的网络带宽的浪费，降低服务器的负担。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-08-15T03:01:43.000Z">
-<meta property="article:modified_time" content="2020-08-15T03:44:20.574Z">
+<meta property="article:published_time" content="2020-09-28T09:31:58.000Z">
+<meta property="article:modified_time" content="2020-09-28T09:47:52.872Z">
 <meta property="article:author" content="D.Xia">
-<meta property="article:tag" content="-jQuery">
+<meta property="article:tag" content="-浏览器">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/08/15/Jquery%E9%87%8D%E7%82%B9%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">
+<link rel="canonical" href="http://yoursite.com/2020/09/28/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>jQuery重点方法总结 | xd|前端日记</title>
+  <title>浏览器的缓存机制 | xd|前端日记</title>
   
 
 
@@ -194,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/15/Jquery%E9%87%8D%E7%82%B9%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          jQuery重点方法总结
+          浏览器的缓存机制
         </h1>
 
         <div class="post-meta">
@@ -218,7 +218,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-08-15 11:01:43 / 修改时间：11:44:20" itemprop="dateCreated datePublished" datetime="2020-08-15T11:01:43+08:00">2020-08-15</time>
+              <time title="创建时间：2020-09-28 17:31:58 / 修改时间：17:47:52" itemprop="dateCreated datePublished" datetime="2020-09-28T17:31:58+08:00">2020-09-28</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -241,22 +241,37 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h5 id="1-核心"><a href="#1-核心" class="headerlink" title="1.核心"></a>1.核心</h5><p>each()：遍历jQuery对象</p>
-<p>length：jQuery对象长度</p>
-<p>get()：根据传入的下标获取对应的jQuery对象，返回的是一个js原生对象</p>
-<p>index()：获取当前jQuery对象的下标</p>
-<p>data(key，value)：获取或者设置jQuery对象的data-xxx属性值</p>
-<h5 id="2-属性"><a href="#2-属性" class="headerlink" title="2.属性"></a>2.属性</h5><p>attr() 获取或者设置jQuery对象的对应属性的属性值（区分与css()方法的区别)</p>
-<p>该方法的参数可接受一个回调函数，回调函数中可以两个参数分别为被操作对象的下标以及获取到的属性的值</p>
-<p>prop() 只获取第一个匹配元素的属性值</p>
-<h5 id="3-文档处理"><a href="#3-文档处理" class="headerlink" title="3.文档处理"></a>3.文档处理</h5><h6 id="3-1内部插入"><a href="#3-1内部插入" class="headerlink" title="3.1内部插入"></a>3.1内部插入</h6><p>​        append()把一个元素插入jQuery对象内部</p>
-<p>​        appendTo()在被选中的元素内部插入一个元素</p>
-<h6 id="3-2外部插入"><a href="#3-2外部插入" class="headerlink" title="3.2外部插入"></a>3.2外部插入</h6><p>​        after()</p>
-<p>​        before()</p>
-<p>replaceWith()替换</p>
-<p>empty()删除</p>
-<p>remove()移除</p>
-<p>clone()克隆元素 参数可选项，1：表示是否复制元素上的处理函数。2：是否对事件处理程序和克隆的元素的所有子元素的数据应该被复制（复制时应该注意该元素上是否有id属性，因为每一个id都是唯一性标志）</p>
+        <h5 id="什么是浏览器的缓存机制"><a href="#什么是浏览器的缓存机制" class="headerlink" title="什么是浏览器的缓存机制"></a>什么是浏览器的缓存机制</h5><hr>
+<p>指在一段有效时间内，保存已接收到的web资源副本，如果在有效时间内发起了对该资源的再一次请求，那么浏览器直接使用这个缓存的副本，而不是向服务器重新发起新的请求。</p>
+<h5 id="为什么要使用浏览器的缓存机制"><a href="#为什么要使用浏览器的缓存机制" class="headerlink" title="为什么要使用浏览器的缓存机制"></a>为什么要使用浏览器的缓存机制</h5><hr>
+<p>可以有效地提高页面的打开速度，减少不必要的网络带宽的浪费，降低服务器的负担。</p>
+<a id="more"></a>
+
+<h5 id="缓存机制的种类"><a href="#缓存机制的种类" class="headerlink" title="缓存机制的种类"></a>缓存机制的种类</h5><hr>
+<p>浏览器的缓存策略由服务器来指定，一般可以分为：<strong>强缓存策略</strong>、<strong>协商缓存策略</strong>和<strong>启发式缓存策略</strong></p>
+<h5 id="强缓存策略"><a href="#强缓存策略" class="headerlink" title="强缓存策略"></a>强缓存策略</h5><hr>
+<p>使用强缓存策略时，如果缓存资源有效，则直接使用缓存资源，不必重新向服务器发起请求。强缓存策略可以通过两种方式来设置：<code>HTTP</code> 头信息中的 <code>Expires</code> 属性和 <code>Cache-Control</code> 属性。</p>
+<p><strong><code>Expires</code></strong> 是 <code>HTTP 1.0</code> 中提出的方式，服务器通过在响应头中添加 <code>Expires</code> 属性，来指定资源的过期时间。在有效期内，该资源可以被缓存使用，不必重新向服务器发送请求。<code>Expires</code> 设置的时间是一个绝对时间，它是服务器的时间，因此可能存在这样的问题：客户端时间和服务器端时间不一致时，可能会影响缓存命中的结果，这种方式已逐步被淘汰。</p>
+<p><strong><code>Cache-Control</code></strong> 是在 <code>HTTP 1.1</code> 中提出的一个新的头部属性，弥补了 <code>Expires</code> 的缺陷，它提供了对资源缓存的更精确的控制，可以取以下这些值：</p>
+<ul>
+<li><code>max-age</code>：指定资源能够被缓存时间的大小，是一个相对的时间，它会根据这个时间的大小和资源第一次请求时的时间来计算出资源过期的时间，单位是秒</li>
+<li><code>no-cache</code>：强制客户端直接向服务器发送请求，也就是说每次请求都必须向服务器发送。服务器接收到请求，然后判断资源是否变更，是则返回新内容，否则返回 304 状态码表示未变更。这个很容易让人产生误解，使人误以为是响应不被缓存，实际上 <code>no-cache</code> 是会被缓存的，只是每次在向客户端提供响应数据时，缓存都要向服务器评估缓存响应的有效性</li>
+<li><code>no-store</code>：用来指定资源不能够被缓存</li>
+<li><code>private</code>：规定资源只能被客户端缓存，不能够代理服务器所缓存</li>
+<li><code>public</code>：指示响应可被任何缓存区缓存</li>
+<li>……</li>
+</ul>
+<p>一般来说只需要设置  <code>Cache-Control</code> 与 <code>Expires</code> 中的一种方式就可以实现强缓存策略，但当同时存在时，<code>Cache-Control</code> 优先级会更高，它会覆盖 <code>Expires</code> 的配置</p>
+<h5 id="协商缓存策略"><a href="#协商缓存策略" class="headerlink" title="协商缓存策略"></a>协商缓存策略</h5><hr>
+<p>使用协商缓存策略时，会先向服务器发送一个请求，如果资源没有发生修改，则返回一个 304 状态码，让浏览器使用本地的缓存副本，如果资源发生了修改，则返回修改后的资源。</p>
+<p>协商缓存也可以通过两种方式来设置：<code>HTTP</code> 头信息中的 <code>Etag</code>和 <code>Last-Modified</code> 属性。</p>
+<p>服务器通过在响应头中添加 <code>Last-Modified</code> 属性来指出资源最后一次修改的时间，当浏览器下一次发起请求时，会在请求头中添加一个 <code>If-Modified-Since</code> 的属性，属性值为上一次资源返回时的 <code>Last-Modified</code> 的值。当请求发送到服务器后服务器会通过这个属性来和资源的最后一次的修改时间来进行比较，以此来判断资源是否做了修改。如果资源没有修改，那么返回 304 状态，让客户端使用本地的缓存，如果资源已经被修改了，则返回修改后的资源。使用这种方法有一个缺点，就是 <code>Last-Modified</code>标注的最后修改时间只能精确到秒级，如果某些文件在1 秒钟以内被修改多次的话，那么文件已经改变了但是 <code>Last-Modified</code>却没有改变，这样就会造成缓存的命中不准确。</p>
+<p>因为 <code>Last-Modified</code> 可能发生的不准确性，<code>HTTP</code> 中提供了另外一种方式，那就是 <code>Etag</code> 属性。服务器在返回资源的时候，在头信息中添加了 <code>Etag</code> 属性，这个属性是资源生成的唯一标识符，当资源发生改变的时候，这个值也会发生改变。在下一次资源请求时，浏览器会在请求头中添加一个 <code>If-None-Match</code> 属性，这个属性的值就是上次返回的资源的 <code>Etag</code> 的值。服务接收到请求后会根据这个值来和资源当前的 <code>Etag</code> 的值来进行比较，以此来判断资源是否发生改变，是否需要返回资源。通过使用 <code>Etag</code> 的方式，比 <code>Last-Modified</code> 的方式更加精确。</p>
+<p>当 <code>Last-Modified</code> 和 <code>Etag</code> 属性同时出现的时候，<code>Etag</code> 的优先级更高。使用协商缓存的时候，服务器需要考虑负载均衡的问题，因此多个服务器上资源的 <code>Last-Modified</code> 应该保持一致，因为每个服务器上 <code>Etag</code> 的值都不一样，因此在考虑负载均衡时，最好不要设置 <code>Etag</code> 属性。</p>
+<p><strong>强缓存策略和协商缓存策略在缓存命中时都会直接使用本地的缓存副本</strong>，区别在于协商缓存会向服务器发送一次请求，而当缓存未命中时，都会向服务器重新发送请求来获取资源。</p>
+<h5 id="启发式缓存策略"><a href="#启发式缓存策略" class="headerlink" title="启发式缓存策略"></a><strong>启发式缓存策略</strong></h5><hr>
+<p>启发式缓存策略会根据响应头中 2 个时间字段 <code>Date</code> 和 <code>Last-Modified</code> 之间的时间差值，取其值的 <code>10%</code> 作为缓存时间周期。也就是说，当存有 <code>Last-Modified</code> 字段的时候，即使是断网，且强缓存都失效后，也有一定时间是直接读取缓存文件的。</p>
+<p>在实际的缓存机制中，强缓存策略、启发式缓存策略和协商缓存策略是一起合作使用的。浏览器首先会根据请求的信息判断强缓存是否命中，如果命中则直接使用资源，如果未命中则触发启发式缓存，如果发现缓存已过期，则再根据头信息向服务器发起请求，使用协商缓存，如果协商缓存命中的话，则服务器不返回资源，浏览器直接使用本地资源的副本，如果协商缓存未命中，则服务器返回最新的资源给浏览器。</p>
 
     </div>
 
@@ -275,7 +290,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/jQuery/" rel="tag"># -jQuery</a>
+              <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag"># -浏览器</a>
           </div>
 
         
@@ -284,13 +299,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/08/06/vue%E7%AC%94%E8%AE%B0/" rel="prev" title="vue笔记">
-      <i class="fa fa-chevron-left"></i> vue笔记
+    <a href="/2020/09/22/%E5%AE%8F%E4%BB%BB%E5%8A%A1%E4%B8%8E%E5%BE%AE%E4%BB%BB%E5%8A%A1/" rel="prev" title="宏任务与微任务">
+      <i class="fa fa-chevron-left"></i> 宏任务与微任务
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/09/01/%E9%9D%A2%E8%AF%951/" rel="next" title="面试1">
-      面试1 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -349,7 +361,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-核心"><span class="nav-number">1.</span> <span class="nav-text">1.核心</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-属性"><span class="nav-number">2.</span> <span class="nav-text">2.属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-文档处理"><span class="nav-number">3.</span> <span class="nav-text">3.文档处理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#3-1内部插入"><span class="nav-number">3.1.</span> <span class="nav-text">3.1内部插入</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-2外部插入"><span class="nav-number">3.2.</span> <span class="nav-text">3.2外部插入</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#什么是浏览器的缓存机制"><span class="nav-number">1.</span> <span class="nav-text">什么是浏览器的缓存机制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么要使用浏览器的缓存机制"><span class="nav-number">2.</span> <span class="nav-text">为什么要使用浏览器的缓存机制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#缓存机制的种类"><span class="nav-number">3.</span> <span class="nav-text">缓存机制的种类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#强缓存策略"><span class="nav-number">4.</span> <span class="nav-text">强缓存策略</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#协商缓存策略"><span class="nav-number">5.</span> <span class="nav-text">协商缓存策略</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启发式缓存策略"><span class="nav-number">6.</span> <span class="nav-text">启发式缓存策略</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

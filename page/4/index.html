@@ -190,6 +190,102 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/13/JavaScript%E4%B8%AD%E7%9A%84this%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="D.Xia">
+      <meta itemprop="description" content="Fairy music flutters everywhere">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xd|前端日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/13/JavaScript%E4%B8%AD%E7%9A%84this%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">JavaScript中的this原理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-13 14:23:27" itemprop="dateCreated datePublished" datetime="2020-07-13T14:23:27+08:00">2020-07-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-14 09:56:05" itemprop="dateModified" datetime="2020-07-14T09:56:05+08:00">2020-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>this指的是函数运行时所在的环境。</p>
+<p>下面一段代码obj.foo和foo指向同一个函数，但是执行结果可能不一样</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  foo: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>.bar) &#125;,</span><br><span class="line">  bar: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = obj.foo;</span><br><span class="line"><span class="keyword">var</span> bar = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">obj.foo() <span class="comment">// 1</span></span><br><span class="line">foo() <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="1-内存的数据结构"><a href="#1-内存的数据结构" class="headerlink" title="1.内存的数据结构"></a>1.内存的数据结构</h5><p>JavaScript语言之所以有this的设计，跟内存里面的数据结构有关系。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">foo</span>:  <span class="number">5</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码将一个对象赋值给变量obj。JavaScript引擎先在内存里面。生成一个对象｛foo:5｝,然后把这个对象的内存地址赋值给变量obj。</p>
+<p>也就是说，变量obj是一个地址（reference）。后面如果要读取obj.foo，引擎先从obj拿到内存地址，然后再从该地址读出原始的对象，返回它的foo属性。</p>
+<p>原始的对象以字典结构保存，每一个属性名都对应一个属性描述对象。举例来说，上面例子的foo属性，实际上是以下面的形式保存的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  foo: &#123;</span><br><span class="line">    [[value]]: <span class="number">5</span></span><br><span class="line">    [[writable]]: <span class="literal">true</span></span><br><span class="line">    [[enumerable]]: <span class="literal">true</span></span><br><span class="line">    [[configurable]]: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意，foo属性的值保存在属性描述对象的value属性里面</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/13/JavaScript%E4%B8%AD%E7%9A%84this%E5%8E%9F%E7%90%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/09/js%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -537,98 +633,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/04/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="D.Xia">
-      <meta itemprop="description" content="Fairy music flutters everywhere">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xd|前端日记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/04/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="post-title-link" itemprop="url">深拷贝与浅拷贝</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-04 09:26:23" itemprop="dateCreated datePublished" datetime="2020-07-04T09:26:23+08:00">2020-07-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-10 19:10:26" itemprop="dateModified" datetime="2020-08-10T19:10:26+08:00">2020-08-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">笔记整理</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>区别：假设B是复制的A的，如果修改A，B也变化说明是浅拷贝，如果B没变化，那就是深拷贝。</p>
-<p>例子：</p>
-<p>​    1.浅拷贝例子：</p>
-<p>​        </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],</span><br><span class="line"></span><br><span class="line"> b=a;</span><br><span class="line"> a[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line"> <span class="built_in">console</span>.log(a,b);</span><br></pre></td></tr></table></figure>
-
-<p>​    在控制台我们看到的输出结果是，b数组与a数组的结果是相等的。那么原因是什么呢？首先我们要先引入基本数据类型与引用数据类型的概念。基本数据类型有：number，string，boolean，null，undefiened五类，（es6中新引入symbol）。引用数据类型（Object类）有常规名值对的无序对象｛a:1｝，数组[1,2,3,4],以及函数。这两种数据存储的方式是这样的：</p>
-<p>a、基本类型，名值储存在栈内存中，所以当被复制时，在栈内存中会新开辟一个内存，所以修改被复制的值时对后者不会造成影响。当然let a=1，b=a；虽然b不受a影响，但是这也算不上深拷贝，因为深拷贝本身只针对较为复杂的object类型数据。</p>
-<p>b、引用数据类型——名存在栈内存中，值存在于堆内存中，但是栈内存会提供一个引用的地址指向堆内存中的值；例如a，b两个数组，当b=a进行拷贝时，其实复制的是a的引用地址，而并非堆里的值，所以在修改a数组中的值时，b也会受影响。假如在堆内存中也开辟一个新的内存专门为b存放值，就像基本类型那样，起步就达到深拷贝的效果了。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/04/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-	<div>
-		
-	</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -700,7 +704,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
