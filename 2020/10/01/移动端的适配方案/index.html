@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":10,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="为什么叫移动端适配 在移动端web页面开发中，由于手机屏幕尺寸、分辨率的不同，或者要考虑横竖屏问题，为了让页面在不同的设备上具有相适应的展示效果，需要在开发过程中使用合理的适配方案。 视口 &lt;meta&gt;标签中丁一些元数据信息，通过设置&lt;meta name&#x3D;&quot;viewport&quot;&gt;，提供有关视口初始大小信息，供移动设备使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端的适配方案">
+<meta property="og:url" content="http://yoursite.com/2020/10/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:site_name" content="xd|前端日记">
+<meta property="og:description" content="为什么叫移动端适配 在移动端web页面开发中，由于手机屏幕尺寸、分辨率的不同，或者要考虑横竖屏问题，为了让页面在不同的设备上具有相适应的展示效果，需要在开发过程中使用合理的适配方案。 视口 &lt;meta&gt;标签中丁一些元数据信息，通过设置&lt;meta name&#x3D;&quot;viewport&quot;&gt;，提供有关视口初始大小信息，供移动设备使用。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-01T11:14:25.000Z">
+<meta property="article:modified_time" content="2020-10-01T11:59:50.602Z">
+<meta property="article:author" content="D.Xia">
+<meta property="article:tag" content="-移动端">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/10/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>移动端的适配方案 | xd|前端日记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">xd|前端日记</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="D.Xia">
+      <meta itemprop="description" content="Fairy music flutters everywhere">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xd|前端日记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          移动端的适配方案
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-01 19:14:25 / 修改时间：19:59:50" itemprop="dateCreated datePublished" datetime="2020-10-01T19:14:25+08:00">2020-10-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">-笔记整理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h5 id="为什么叫移动端适配"><a href="#为什么叫移动端适配" class="headerlink" title="为什么叫移动端适配"></a>为什么叫移动端适配</h5><hr>
+<p>在移动端web页面开发中，由于手机屏幕尺寸、分辨率的不同，或者要考虑横竖屏问题，为了让页面在不同的设备上具有相适应的展示效果，需要在开发过程中使用合理的适配方案。</p>
+<h5 id="视口"><a href="#视口" class="headerlink" title="视口"></a>视口</h5><hr>
+<p><code>&lt;meta&gt;</code>标签中丁一些元数据信息，通过设置<code>&lt;meta name=&quot;viewport&quot;&gt;</code>，提供有关视口初始大小信息，供移动设备使用。</p>
+<a id="more"></a>
+
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>width</code></td>
+<td>数值 / <code>device-width</code></td>
+<td>视口宽度</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>数值 / <code>device-height</code></td>
+<td>视口高度</td>
+</tr>
+<tr>
+<td><code>initial-scale</code></td>
+<td>0.0 ~ 10.0</td>
+<td>设备宽度与视口大小之间的缩放比率</td>
+</tr>
+<tr>
+<td><code>maximum-scale</code></td>
+<td>0.0 ~ 10.0</td>
+<td>缩放最大值</td>
+</tr>
+<tr>
+<td><code>minimum-scale</code></td>
+<td>0.0 ~ 10.0</td>
+<td>缩放最小值</td>
+</tr>
+<tr>
+<td><code>user-scalable</code></td>
+<td>布尔值</td>
+<td>默认<code>yes</code>，为<code>no</code>时用户不能缩放网页</td>
+</tr>
+</tbody></table>
+<h5 id="适配方案"><a href="#适配方案" class="headerlink" title="适配方案"></a>适配方案</h5><h5 id="百分比方案"><a href="#百分比方案" class="headerlink" title="百分比方案"></a>百分比方案</h5><hr>
+<p>原理：使用 <strong>百分比</strong> 定义 <strong>宽度</strong>，<strong>高度</strong> 用<strong><code>px</code></strong>固定，根据可视区域实时尺寸进行调整，尽可能适应各种分辨率，通常使用<code>max-width</code>/<code>min-width</code>控制尺寸范围过大或者过小。下表是子元素不同属性设置百分比的依据</p>
+<p>优点：原理简单，基本上不存在兼容性问题</p>
+<p>缺点：</p>
+<ol>
+<li>屏幕尺寸跨度过大，相对设计稿过大或者过小的屏幕不能正常显示，在大屏手机或横竖屏切换场景下可能会导致页面元素被拉伸变形，字体大小无法随屏幕大小发生变化。</li>
+<li>设置盒模型的不同属性时，其百分比设置的参考元素不唯一，容易使布局问题变得复杂</li>
+</ol>
+<h5 id="rem方案"><a href="#rem方案" class="headerlink" title="rem方案"></a>rem方案</h5><hr>
+<p>原理：<strong>rem</strong>是相对长度单位，rem方案中的样式设计为相对于<strong>根元素</strong><code>font-size</code>计算值的倍数。根据 <strong>屏幕宽度</strong> 设置<code>html</code>标签的<code>font-size</code>，在布局时使用 <strong>rem</strong> 单位布局，达到自适应的目的，是 <strong>弹性布局</strong> 的一种实现方式。</p>
+<p>（根据<code>rem</code>将页面放大<code>dpr</code>倍, 然后<code>viewport</code>设置为<code>1/dpr</code>.</p>
+<p>如iphone6 plus的dpr为3, 则页面整体放大3倍, 1px(css单位)在plus下默认为3px(物理像素)<br>然后<code>viewport</code>设置为1/3, 这样页面整体缩回原始大小. 从而实现高清。）</p>
+<p>如iphone6 plus的dpr为3, 则页面整体放大3倍, 1px(css单位)在plus下默认为3px(物理像素)<br>然后<code>viewport</code>设置为1/3, 这样页面整体缩回原始大小. 从而实现高清。</p>
+<p>首先获取文档根元素和设备<code>dpr</code>，设置 <strong>rem</strong>（一般封装一个js来完成），在<code>html</code>文档加载和解析完成后调整<code>body</code>字体大小； 在页面<strong>缩放 / 回退 / 前进</strong>的时候， 获取元素的内部宽度 (不包括垂直滚动条，边框和外边距)，重新调整 <strong>rem</strong> 大小。</p>
+<p>优点：</p>
+<ol>
+<li>自适应效果相对于静态布局和百分比方案会更佳，页面不会因为伸缩发生变形。</li>
+<li>兼容性较好，ios: 6.1，android: 2.1系统以上都支持，兼容大部分主流浏览器</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>并不是纯css移动适配方案，需要依赖js脚本去监听分辨率的变化，动态改变根元素的字体大小，<code>css</code>样式和 <code>js</code> 代码有一定 <strong>耦合性</strong>，并且必须将改变<code>font-size</code>的代码放在 <strong>css</strong> 样式之前。</li>
+<li>小像素问题，浏览器渲染最小单位是像素，通过rem计算后可能会出现小像素，浏览器对这部分小数会采取四舍五入，按整数渲染。（解决办法：指定最小转换像素，对于比较小的像素，不转换为 <strong>rem</strong> 或 <strong>vw</strong>）；两个同样宽度的元素因为各自周围的元素宽度不同，导致两元素相差<code>1px</code>；宽高相同的正方形，长宽不等了；<code>border-radius: 50%</code> 画的圆不圆。</li>
+<li><strong>Android 浏览器下 line-height 垂直居中偏离的问题</strong>。常用的垂直居中方式就是使用line-height，这种方法在Android设备下并不能完全居中。</li>
+</ol>
+<h5 id="vh-vw方案"><a href="#vh-vw方案" class="headerlink" title="vh/vw方案"></a>vh/vw方案</h5><hr>
+<p>原理：<strong>视口</strong>是浏览器中用于呈现网页的区域，移动端的视口通常指的是 <strong>布局视口</strong></p>
+<p><strong>vw : **1vw</strong> 等于 <strong>视口宽度</strong> 的 <strong>1%</strong></p>
+<p><strong>vh</strong> : <strong>1vh</strong>  等于 <strong>视口高度</strong> 的 *<em>1% *</em></p>
+<p><strong>vmin</strong> : 选取 <strong>vw</strong> 和 <strong>vh</strong> 中 <strong>最小</strong> 的那个</p>
+<p><strong>vmax</strong> : 选取 <strong>vw</strong> 和 <strong>vh</strong> 中 <strong>最大</strong> 的那个</p>
+<p>使用 <strong>css</strong> 预处理器把设计稿尺寸转换为 <strong>vw</strong> 单位，包括 <strong>文本</strong>，<strong>布局高宽</strong>，<strong>间距</strong> 等，使得这些元素能够随视口大小自适应调整。以<code>1080px</code>设计稿为基准，转化的计算表示为</p>
+<p>优点：</p>
+<ol>
+<li>纯 <strong>css</strong> 移动端适配方案，不存在脚本依赖问题</li>
+<li>相对于 <strong>rem</strong> 以<strong>根元素字体大小的倍数</strong> 定义 <strong>元素大小</strong>，逻辑清晰简单，视口单位依赖于视口的尺寸 <code>&quot;1vw ＝ 1/100 viewport width&quot;</code>，根据 <strong>视口尺寸的百分比</strong> 来定义 <strong>元素宽度</strong></li>
+</ol>
+<p>缺点：存在一些兼容性问题，Android4.4以下不支持</p>
+<h5 id="rem-vw-vh方案"><a href="#rem-vw-vh方案" class="headerlink" title="rem+vw/vh方案"></a>rem+vw/vh方案</h5><hr>
+<p><strong>vw/vh</strong> 方案能够实现宽度和高度的自适应，并且逻辑清晰，由于其被支持得较晚，所以存在一定的兼容性问题。将 <strong>vw/vh</strong> 方案与 <strong>rem</strong> 方案相结合，<strong>给根元素设置随视口变化的vw单位</strong>，可以通过<code>postcss-plugin-vwtorem</code>将其转换。</p>
+<h5 id="基于媒体查询的响应式设计"><a href="#基于媒体查询的响应式设计" class="headerlink" title="基于媒体查询的响应式设计"></a>基于媒体查询的响应式设计</h5><hr>
+<p><strong>响应式设计</strong> 使得一个网站同时适配 <strong>多种设备</strong> 和 <strong>多个屏幕</strong>，让网站的布局和功能随用户的使用环境（屏幕大小、输出方式、设备/浏览器能力而变化），使其视觉合理，交互方式符合习惯。如使得内容区块可伸缩与自由排布，边距适应页面尺寸，图片适应比例变化，能够自动隐藏/部分显示内容，能自动折叠导航和菜单。</p>
+<p>原理：主要实现是通过 <strong>媒体查询</strong>，通过给不同分辨率的设备编写不同的样式实现响应式布局，用于解决不同设备不同分辨率之间兼容问题，一般是指PC、平板、手机设备之间较大的分辨率差异。实现上不局限于具体的方案，通常结合了 <strong>流式布局</strong> <code>+</code> <strong>弹性布局</strong> 方案。比如给小屏幕手机设置<code>@2x</code>图，为大屏手机设置<code>@3x</code>图</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width:</span> <span class="number">375px</span>)&#123;</span><br><span class="line">    //样式1</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">min-width:</span> <span class="number">750</span>)&#123;</span><br><span class="line">    //样式2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>优点：能够使网页在不同设备、不同分辨率屏幕上呈现合理布局，不仅仅是样式伸缩变换</p>
+<p>缺点：</p>
+<ol>
+<li><p>要匹配足够多的设备与屏幕，一个web页面需要多个设计方案，工作量比较大</p>
+</li>
+<li><p>通过媒体查询技术需要设置一定量的断点，到达某个断点前后的页面发生显著变化，用户体验不太友好</p>
+</li>
+</ol>
+<h5 id="移动端web页面适配方案中的问题"><a href="#移动端web页面适配方案中的问题" class="headerlink" title="移动端web页面适配方案中的问题"></a>移动端web页面适配方案中的问题</h5><hr>
+<ol>
+<li><strong>1px问题</strong>：是指设置边框 为<code>1px</code> <strong>css</strong>像素，在 <strong>普通屏幕</strong> 下<code>1px</code>，<strong>高清屏幕</strong> (<code>dpr</code>为<code>2</code>)下<code>2px</code>的情况。是由于不同移动设备的<code>dpr</code>不同，导致<code>1px</code> <strong>css</strong>像素，转换成物理像素后显示不一样。（<strong>css</strong> 中涉及<code>1</code>像素的地方仍然使用<code>px</code>作为单位，<strong>设置<code>&lt;meta&gt;</code> 标签中 <code>initial-scale = 1/dpr</code> ，将整个页面缩小<code>dpr</code>倍</strong>，对于页面采用 <strong>rem</strong> 方案的情况，将页面的 <strong>根字体</strong> 再放大<code>dpr</code>倍，这个时候就能够在不改变页面其他布局的情况下，保持边框的 <strong>css</strong> 像素为<code>1px</code>。</li>
+<li><strong>transform 的 scale 属性</strong>：<code>transform</code>的<code>scale</code>属性允许对元素进行缩放，其中<code>scaleY(y)</code>通过设置Y轴的值来定义缩放转换，并结合伪元素使用，通过<code>transform-origin: 50% 0%</code>修改元素变换的中心点实现。针对横着的边框线用<code>scaleY(y)</code>，针对竖着的边框线要用<code>scaleX(x)</code>，针对一圈的边框线用<code>scale()</code>，并且需要注意转移元素变换中心点。</li>
+</ol>
+<h5 id="移动端web页面对图片的处理"><a href="#移动端web页面对图片的处理" class="headerlink" title="移动端web页面对图片的处理"></a>移动端web页面对图片的处理</h5><hr>
+<p>加载网页时，大部分流量来自 <strong>加载图片</strong>。指定图像宽度时使用<strong>相对单位</strong>，<strong>防止意外溢出视口</strong>，如 <code>width: 50%</code>，将图片宽度设置为包含元素宽度的 <code>50%</code>。因为 <strong>css</strong> 允许内容溢出容器， 需要使用<strong><code>max-width: 100%</code> 来保证图像及其他内容不会溢出</strong>。使用 img 元素的 <code>alt</code> 属性提供描述，描述有助于提高网站的可访问性，能提供语境给屏幕阅读器及其他辅助性技术，<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fdevelopers.google.com%2Fweb%2Ffundamentals%2Fdesign-and-ux%2Fresponsive%2Fimages" target="_blank" rel="noopener">参考</a> 。<strong>维护自适应页面中图片宽高比固定</strong>比较常用的方法是使用<strong><code>padding</code></strong>设置。对于不同<code>dpr</code>以及不同分辨率/尺寸的屏幕，为了避免资源浪费和等待时间延长，需要针对不同的屏幕使用合适的图片，加载的图片分为通过标签引入的图片和背景图片。</p>
+
+    </div>
+
+    
+    
+    
+	<div>
+		
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+		
+	</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" rel="tag"># -移动端</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/28/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/" rel="prev" title="浏览器的缓存机制">
+      <i class="fa fa-chevron-left"></i> 浏览器的缓存机制
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么叫移动端适配"><span class="nav-number">1.</span> <span class="nav-text">为什么叫移动端适配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#视口"><span class="nav-number">2.</span> <span class="nav-text">视口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#适配方案"><span class="nav-number">3.</span> <span class="nav-text">适配方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#百分比方案"><span class="nav-number">4.</span> <span class="nav-text">百分比方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rem方案"><span class="nav-number">5.</span> <span class="nav-text">rem方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#vh-vw方案"><span class="nav-number">6.</span> <span class="nav-text">vh&#x2F;vw方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rem-vw-vh方案"><span class="nav-number">7.</span> <span class="nav-text">rem+vw&#x2F;vh方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基于媒体查询的响应式设计"><span class="nav-number">8.</span> <span class="nav-text">基于媒体查询的响应式设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#移动端web页面适配方案中的问题"><span class="nav-number">9.</span> <span class="nav-text">移动端web页面适配方案中的问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#移动端web页面对图片的处理"><span class="nav-number">10.</span> <span class="nav-text">移动端web页面对图片的处理</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="D.Xia"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">D.Xia</p>
+  <div class="site-description" itemprop="description">Fairy music flutters everywhere</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xdd970706" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xdd970706" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+		<div class="musicPlayer">
+			<iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=432430716&auto=1&height=66"></iframe>
+		</div>
+		<div id="days"></div>
+		<script>
+			function show_date_time(){
+			window.setTimeout("show_date_time()", 1000);
+			BirthDay=new Date("06/06/2020 12:13:14");
+			today=new Date();
+			timeold=(today.getTime()-BirthDay.getTime());
+			sectimeold=timeold/1000
+			secondsold=Math.floor(sectimeold);
+			msPerDay=24*60*60*1000
+			e_daysold=timeold/msPerDay
+			daysold=Math.floor(e_daysold);
+			e_hrsold=(e_daysold-daysold)*24;
+			hrsold=setzero(Math.floor(e_hrsold));
+			e_minsold=(e_hrsold-hrsold)*60;
+			minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+			seconds=setzero(Math.floor((e_minsold-minsold)*60));
+			document.getElementById('days').innerHTML="已运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+		}
+		function setzero(i) {
+			if (i<10) {
+				i="0" + i
+			};
+				return i;
+		}
+			show_date_time();
+		</script>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">D.Xia</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
