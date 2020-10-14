@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>面试总结-2</title>
+      <link href="/2020/10/14/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93-2/"/>
+      <url>/2020/10/14/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93-2/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>在经过第一次面试后，紧接着第二天就收到另一家公司的面试邀请。由于已经经历了一次面试，所以这次面试我感觉自己稍微没有那么紧张了，下面是我本次面试过程以及面试的总结。</p><h5 id="面试过程"><a href="#面试过程" class="headerlink" title="面试过程"></a>面试过程</h5><hr><p>首先进去还是<strong>笔试</strong>，可能我的简历上写了对vue跟熟练一些，所以笔试的题目基本上都是关于vue的一些题。两个选择题加上10个左右的简答题，具体的内容如下：</p><a id="more"></a><ol><li>两个选择题主要是一些vue基础题，大概是什么忘了，反正是很基础的题</li><li>RESTful  API 是什么？</li><li>mvvm框架是什么？与一般的框架（jquery）有什么区别？适合在什么场景用？</li><li>列举常用vue指令，并说明使用方法</li><li>如何封装一个vue组件？</li><li>说下自己对vue生命周期的理解</li><li>如何修改第三方ui框架的样式</li><li>vue实现数据双向绑定的的原理</li></ol><p>我感觉自己笔试部分答得还是不太好，毕竟vue的源码自己还在看，所以对于vue的一些理解并没有那么深，因为技术这个东西，会用和会说还是有一定的差距的，能够用并且能够组织自己的语言去描述这些技术点的问题，那说明你对这门技术是掌握了的。</p><p>笔试完了后，那边就让我去复试，复试我的听说是一个工作前端5，6的老师，主要问了：</p><ol><li>对前端个人的想法和看法</li><li>vue中项目的一些问题</li><li>vuex</li><li>对自己的前端技术一个定位</li><li>node.js</li><li>created与mounted的区别</li><li>使用过什么前端ui框架</li><li><code>&lt;router-link&gt;</code>和<code>&lt;a&gt;</code>标签的区别</li><li>然后很多就问了我做过的项目里的一些问题</li><li>最后就是看我这边有什么问题需要问的</li></ol><p>然后就让我稍微等待一下，应该是觉得技术没问题，就让我和他们的HR谈，主要的是个人规划和薪资，最后就是和他们的boss谈，也主要是个人目前的状态，薪资，以及上班的时间问题。</p><p>以上就是本次面试的一个大概流程</p><h5 id="面试总结"><a href="#面试总结" class="headerlink" title="面试总结"></a>面试总结</h5><hr><p>这个总结主要是对自己答得不好的地方一个简单的总结，但是我觉得自己答得都不太好，所以这里就挑选几个面试高频的。</p><ol><li><p>vue生命周期中<code>created()</code>是vue实例已经创建完成，此时实例中的像<code>data</code>、<code>methods</code>等属性已经被初始化好了，如果需要使用data或者调用方法也最早在这里进行操作。</p></li><li><p><code>beforeMount()</code>模板已经在内存中编译好了，但是尚未挂载到页面中去，此时的页面还是旧的。<code>mounted()</code>该函数执行时表示将编译好的模板进行渲染到页面中，只有在此函数调用完后才能够去获取页面的DOM元素，此时组件已经脱离创建阶段进入到运行阶段。</p></li><li><p>vue实现数据双向绑定的原理：数据的劫持结合发布者-订阅者模式的方式，通过object.defineproperty来劫持各个属性的getter、setter，在数据改变的时候发布消息给订阅者，触发相应监听回调。如果是普通的<code>JavaScript</code>对象，vue会遍历该对象的所有属性，用<code>object.defineProperty()</code>将他们转为setter、getter，在属性被访问和修改时会通知变化。</p><p>vue实现数据双向绑定，将mvvm作为数据绑定的入口，整合observer、complie和watcher，通过observer来监听自己的model的数据变化，通过compile来解析编译模板指令，最终用watcher搭起observer和compile之间的通信桥梁，达到数据变化视图更新，视图交互变化数据更新的双向绑定效果。</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> -总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> -面试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>面试总结-1</title>
       <link href="/2020/10/11/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93-1/"/>
       <url>/2020/10/11/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93-1/</url>
