@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>JavaScript进阶-数据存取</title>
+      <link href="/2020/11/29/JavaScript%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%8F%96/"/>
+      <url>/2020/11/29/JavaScript%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%8F%96/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>数据存储的位置关系到代码执行过程中数据的检索速度。在JavaScript中有下面四种基本数据存取位置。</p><ol><li><p>字面量：只代表自身，不存储在特定的位置。如:字符串、数字、布尔值、对象、数组、函数、正则表达式，以及特殊的<code>null</code>和<code>undefined</code></p></li><li><p>本地变量：使用关键字var等定义的数据存储单元</p></li><li><p>数组元素：存储在JavaScript数组对象内部，以数字作为索引</p></li><li><p>对象成员：存储在JavaScript对象内部，以字符串作为索引</p></li></ol><p>字面量和局部变量的存取数据时间更少。</p><p>下面是几种关于在JavaScript中存储数据方面提高性能的建议</p><a id="more"></a><h5 id="管理作用域"><a href="#管理作用域" class="headerlink" title="管理作用域"></a>管理作用域</h5><hr><p>JavaScript中的作用域确定了哪些变量能够被访问到，以及确定this的赋值。下面来理解一下作用域的工作原理</p><h6 id="作用域链和标识符解析"><a href="#作用域链和标识符解析" class="headerlink" title="作用域链和标识符解析"></a>作用域链和标识符解析</h6><p>在JavaScript中每一个函数都是一个Function对象的实例，因此每一个函数也就是一个对象。在Function对象中拥有可以编程访问的属性，和一系列不能通过代码访问，仅仅是JavaScript引擎存取的内部属性。如<code>[[scope]]</code>，它包含了一个函数被创建的作用域中对象的集合也就是函数的作用域链。作用域链中每一项指向的是一个对象变量，对象变量中存储的是可访问数据的键值对。</p><p>函数在执行时会创建一个执行环境，同一函数多次执行会创建多个执行环境，环境在函数执行完毕后被销毁。</p><p>标识符解析：每遇到一个变量就会经历一次标识符解析过程，决定从哪里获取或者是存储数据。该过程是搜索执行环境的作用域链，会从当前作用域链头部开始，即当前函数的活动对象，一直到寻找完该函数执行环境中作用域链所有对象（全局变量对象）。</p><p>因此一个变量在作用域链越深的位置读写速度越慢，因此建议<strong>多使用局部变量</strong></p><h6 id="改变作用域链"><a href="#改变作用域链" class="headerlink" title="改变作用域链"></a>改变作用域链</h6><ol><li><code>with()</code>语句：接受一个对象参数，语句会给对象的所有属性创建一个变量。</li><li><code>try-catch</code>语句中当<code>try</code>代码块中发生错误，执行过程会自动跳转到<code>catch</code>代码块中。并把异常对象推入一个变量对象并置于作用域的首位</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> -js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vue常用实操方法</title>
       <link href="/2020/10/19/vue%E5%B8%B8%E7%94%A8%E5%AE%9E%E6%93%8D%E6%96%B9%E6%B3%95/"/>
       <url>/2020/10/19/vue%E5%B8%B8%E7%94%A8%E5%AE%9E%E6%93%8D%E6%96%B9%E6%B3%95/</url>
