@@ -190,6 +190,107 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/%E6%97%A5%E5%B8%B8%E7%AC%94%E8%AE%B0-%E6%9D%82%E8%AE%B04/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="D.Xia">
+      <meta itemprop="description" content="Fairy music flutters everywhere">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xd|前端日记">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/22/%E6%97%A5%E5%B8%B8%E7%AC%94%E8%AE%B0-%E6%9D%82%E8%AE%B04/" class="post-title-link" itemprop="url">html和css的一些方法-杂记4</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-22 15:36:02" itemprop="dateCreated datePublished" datetime="2020-06-22T15:36:02+08:00">2020-06-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-04 11:14:34" itemprop="dateModified" datetime="2020-07-04T11:14:34+08:00">2020-07-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="1-透明的三种方式："><a href="#1-透明的三种方式：" class="headerlink" title="1.透明的三种方式："></a>1.透明的三种方式：</h4><p>​    1.display:none;</p>
+<p>​    2.visibility:hidden;</p>
+<p>​    3.opacity:0;</p>
+<h4 id="2-清除浮动的方法"><a href="#2-清除浮动的方法" class="headerlink" title="2.清除浮动的方法:"></a>2.清除浮动的方法:</h4><p>​    1.额外标签法:在需要清除浮动的标签后面额外添加一个空白标签，并添加属性clear:both;</p>
+<p>​    2.给父级添加overflow属性，触发BFC的方式，实现清除浮动效果，但是当内容增多时，不会导致自动换行</p>
+<p>​    3.使用after伪元素清除浮动,IE6-7不支持,使用zoom:1,触发hasLayout;</p>
+<p>​        .clearfix::after{</p>
+<p>​            content:””;</p>
+<p>​            display:block;</p>
+<p>​            height:0;</p>
+<p>​            clear:both;</p>
+<p>​            visibility:hidden;</p>
+<p>​        }</p>
+<p>​        .clearfix{</p>
+<p>​        zoom:1;</p>
+<p>}    </p>
+<p>​    注意是给需要清除浮动元素的父亲添加.clearfix;</p>
+<p>​    4.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/22/%E6%97%A5%E5%B8%B8%E7%AC%94%E8%AE%B0-%E6%9D%82%E8%AE%B04/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/12/js%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86-%E6%9D%82%E8%AE%B02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -611,7 +712,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -624,7 +725,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
